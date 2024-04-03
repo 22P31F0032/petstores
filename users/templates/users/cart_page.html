@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% load cart_tag %}
+
+
+{% block css %} 
+<link rel="stylesheet" href="{% static 'css/cart_style.css' %}">
+{% endblock %}
+
+
+{% block content %}
+{% get_user_carts request as carts %}
+
+<section class="main_section">
+    <div class="container">
+        <h2 class="main__title">Your cart (<span id="cart-items">{{ carts.total_qty }}</span> items)</h2>
+        <div class="cart__label__wrap">
+            <p class="cart__label cart__label_main">Item</p>
+            <p class="cart__label">Size</p>
+            <p class="cart__label">Price</p>
+            <p class="cart__label">Quantity</p>
+            <p class="cart__label">Total</p>
+            <p class="cart__label"></p>
+        </div>
+        {% for cart in carts %}
+        <div class="cart__item__wrap" data-cart-id="{{ cart.id }}">
+            <div class="cart__item__product__wrap">
+                <img class="cart__item__product__img" src="{{ cart.product_item.product.image.url }}" alt="">
+                <p class="cart__item__product__name">{{ cart.product_item.product.name }}</p>
+            </div>
+            <p class="cart__item__size cart__item">{{ cart.product_item.size }}</p>
+            <p class="cart__item__price cart__item">${{ cart.product_item.product.sell_price }}</p>
+            <div class="cart__item__qty__wrap cart__item">
+                <button type="button" class="cart__item__qty__btn increment" data-cart-id="{{ cart.id }}" data-cart-change-url="{% url "cart_change" %}">+</button>
+                {% csrf_token %}
+                <p class="cart__item__qty cart-item-qty">{{ cart.quantity }}</p>
+                <button type="button" class="cart__item__qty__btn decrement" data-cart-id="{{ cart.id }}" data-cart-change-url="{% url "cart_change" %}">-</button>
+                {% csrf_token %}
+            </div>
+            <p class="cart__item__total-price cart__item">${{ cart.product_price }}</p>
+            <p class="cart__item__delete-link"><a href="{% url 'cart_remove' %}" data-cart-id="{{ cart.id }}" class="material-icons ajax-remove">clear</a></p>
+            {% csrf_token %}
+        </div>
+        {% endfor %}
+        <div class="cart__result__wrap">
+            {% comment %} <div class="cart__result__item">
+                <p class="cart__result__item__label">Subtotal:</p>
+                <p class="cart__result__item__total">$1926</p>
+            </div> {% endcomment %}
+            <div class="cart__result__item">
+                <p class="cart__result__item__label">Grand total:</p>
+                <p class="cart__result__item__total cart__result__item__total_grand">${{ carts.total_price }}</p>
+            </div>
+        </div>
+        <a href="#" class="cart__result__checkout">Check Out</a>
+
+    </div>
+</section>
+
+{% endblock %}

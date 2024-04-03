@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/about_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="main_section">
+        <div class="container">
+            <h2 class="main__title">About Us</h2>
+            <div class="about__wrap">
+                <p class="about__text">Welcome to Pet Store, your one-stop destination for all your pet needs. Our journey began in [year of establishment], with a passion for providing quality products and services to pet lovers everywhere. Since then, we have been committed to offering a wide range of products, from premium pet foods to toys and accessories, ensuring that your furry friends lead happy and healthy lives.</p>
+                <p class="about__text">
+                    "At our pet store, we're passionate about connecting animals with loving homes. With a commitment to quality care and expertise, we strive to provide a diverse selection of healthy pets and supplies, ensuring every customer finds exactly what they need to nurture their furry, feathered, or scaly companions.".</p>
+                <p class="about__text">
+                    At the heart of our ethos is a dedication to the well-being of every pet that comes through our doors. Our knowledgeable staff members are not just employees; they're pet enthusiasts themselves, eager to share their expertise and provide personalized recommendations to ensure your furry, feathered, or scaly friend receives the best care possible.</p>
+                <p class="about__text">
+                    our commitment to pets goes beyond our store walls. We actively support local animal welfare organizations and initiatives, believing in giving back to the community that sustains us. Through partnerships, donations, and events, we strive to make a positive impact on the lives of pets in need, because we believe that every animal deserves a loving home and a happy, healthy life. </p>
+                <p class="about__text">
+                    Thank you for choosing our pet store as your trusted partner in caring for your cherished companions. We're here to serve you and your pets with dedication, integrity, and a whole lot of love. Together, let's make every wag of the tail, purr of contentment, and chirp of joy a celebration of the special bond we share with our pets.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users_style.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<section class="main_section">
+    <div class="container container_profile">
+        <h2 class="main__title">Your profile</h2>
+        <div class="profile__info__wrap">
+            {% if user.image %}
+            <img class="profile__img" src="{{ user.image.url }}" alt="user_image">
+            {% else %}
+            <img class="profile__img" src="{% static 'img/default_image.png' %}" alt="default_image">
+            {% endif %}
+            <div class="profile__info">
+                <div class="profile__name__update__wrap">
+                    <p class="profile__name">{{ user.first_name }} {{ user.last_name }}</p>
+                    <a href="{% url 'update_profile' %}" class="profile__update__link">Update profile</a>
+                </div>
+                <p class="profile__username">username: {{ user.username }}</p>
+                <p class="profile__email">email: {{ user.email }}</p>
+                <div class="profile__analytics__wrap">
+                    <div class="profile__analytics__item">
+                        <p class="profile__analytics__detail">Purchased sneakers:</p>
+                        <p class="profile__analytics__detail-total">4</p>
+                    </div>
+                    <div class="profile__analytics__item">
+                        <p class="profile__analytics__detail">Amount of purchases:</p>
+                        <p class="profile__analytics__detail-total">$1274</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="profile__orders__title">Your orders:</h2>
+        <div class="profile__orders__wrap">
+            <div class="profile__order__item">
+                <div class="profile__order__info__wrap">
+                    <p class="profile__order__info">Order № 256 - 03/27/2024 16:51</p>
+                    <p>Status: <span class="profile__order__status">in processed</span></p>
+                </div>
+                <a href="#" class="profile__order__detail__link">Order details</a>
+            </div>
+            <div class="profile__order__item">
+                <div class="profile__order__info__wrap">
+                    <p class="profile__order__info">Order № 241 - 03/15/2024 08:21</p>
+                    <p>Status: <span class="profile__order__status">completed</span></p>
+                </div>
+                <a href="#" class="profile__order__detail__link">Order details</a>
+            </div>
+            <div class="profile__order__item">
+                <div class="profile__order__info__wrap">
+                    <p class="profile__order__info">Order № 213 - 02/19/2024 13:01</p>
+                    <p>Status: <span class="profile__order__status">completed</span></p>
+                </div>
+                <a href="#" class="profile__order__detail__link">Order details</a>
+            </div>
+
+        </div>
+        <a href="#" class="profile__order__history">Show the order history</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -29,7 +29,7 @@
                 <p class="cart__item__product__name">{{ cart.product_item.product.name }}</p>
             </div>
             <p class="cart__item__size cart__item">{{ cart.product_item.size }}</p>
-            <p class="cart__item__price cart__item">${{ cart.product_item.product.sell_price }}</p>
+            <p class="cart__item__price cart__item">Rs/- {{ cart.product_item.product.sell_price }}</p>
             <div class="cart__item__qty__wrap cart__item">
                 <button type="button" class="cart__item__qty__btn increment" data-cart-id="{{ cart.id }}" data-cart-change-url="{% url "cart_change" %}">+</button>
                 {% csrf_token %}
@@ -37,7 +37,7 @@
                 <button type="button" class="cart__item__qty__btn decrement" data-cart-id="{{ cart.id }}" data-cart-change-url="{% url "cart_change" %}">-</button>
                 {% csrf_token %}
             </div>
-            <p class="cart__item__total-price cart__item">${{ cart.product_price }}</p>
+            <p class="cart__item__total-price cart__item">Rs/- {{ cart.product_price }}</p>
             <p class="cart__item__delete-link"><a href="{% url 'cart_remove' %}" data-cart-id="{{ cart.id }}" class="material-icons ajax-remove">clear</a></p>
             {% csrf_token %}
         </div>
@@ -49,7 +49,7 @@
             </div> {% endcomment %}
             <div class="cart__result__item">
                 <p class="cart__result__item__label">Grand total:</p>
-                <p class="cart__result__item__total cart__result__item__total_grand">${{ carts.total_price }}</p>
+                <p class="cart__result__item__total cart__result__item__total_grand">Rs/- {{ carts.total_price }}</p>
             </div>
         </div>
         <a href="#" class="cart__result__checkout">Check Out</a>

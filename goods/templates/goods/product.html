@@ -8,7 +8,7 @@
 
 
 {% block content %}
-<section class="main_section">
+<section class="main_section">python 
     <div class="container">
         <a href="{{ request.META.HTTP_REFERER }}" class="back-button"><span class="material-icons back-button_icon">arrow_back_ios</span>Back to the list of Pets</a>
         <div class="product__wrap">
@@ -25,10 +25,10 @@
                 {% if items %}
                 <div class="product__info__price__wrap">
                     {% if product.discount %}
-                    <p class="product__info__price product__info__price_new">$ {{ product.sell_price }}</p>
-                    <p class="product__info__price_old">$ {{ product.price }}</p>
+                    <p class="product__info__price product__info__price_new">Rs/- {{ product.sell_price }}</p>
+                    <p class="product__info__price_old">Rs/- {{ product.price }}</p>
                     {% else %}
-                    <p class="product__info__price">$ {{ product.price }}</p>
+                    <p class="product__info__price">Rs/- {{ product.price }}</p>
                     {% endif %}
                 </div>
 
